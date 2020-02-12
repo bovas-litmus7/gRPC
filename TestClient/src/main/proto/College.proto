@@ -1,0 +1,40 @@
+syntax = "proto3";
+option optimize_for = SPEED;
+
+package prototype;
+
+option java_package = "com.SAA.VO.College";
+option java_multiple_files = true;
+
+
+message Student{
+string name = 1;
+int32 id = 2;
+string address = 3;
+int32 mobile =4;
+}
+
+message Teacher{
+string name =1;
+string address = 2;
+int32 id = 3;
+int32 mobile = 4;
+}
+
+
+message College{
+repeated Student student = 1;
+repeated Teacher teacher =2;
+}
+
+message EchoRequest{
+College college = 1;
+}
+
+message EchoResponse{
+College college = 1;
+}
+
+service EchoService{
+rpc echo(EchoRequest) returns (EchoResponse){};
+}
